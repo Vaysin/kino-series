@@ -1,10 +1,10 @@
 {
   "id": "kino-series-vaysin",
-  "name": "Kino SeriesTR",
-  "version": "0.1.0",
-  "apiVersion": 3,
+  "name": "Kino Series",
+  "version": "0.1.1",
+  "apiVersion": 6,
   "entry": "plugin.js",
-  "description": "Plugin de series turcas",
+  "description": "Prueba de reproducción de Canlidizi mediante navegador oculto",
   "author": "Vaysin",
   "homepage": "https://github.com/Vaysin/kino-series",
   "hosts": [
@@ -17,6 +17,7 @@
     "search",
     "resolve"
   ],
+  "browser": true,
   "color": "#2563EB",
   "icon": "icon.png"
 }
