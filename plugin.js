@@ -59,17 +59,14 @@ export async function resolve(ref) {
     );
   }
 
-  const headers = source.headers || {};
-  const headerNames = Object.keys(headers).join(", ") || "(ninguna)";
+  const headers = { ...(source.headers || {}) };
 
-  let urlForLog = source.url;
-  try {
-    const parsed = new URL(source.url);
-    urlForLog = parsed.origin + parsed.pathname;
-  } catch {}
+  delete headers.Origin;
+  delete headers.Referer;
+  delete headers.origin;
+  delete headers.referer;
 
-  kino.log("Fuente detectada:", urlForLog);
-  kino.log("Cabeceras capturadas:", headerNames);
+  kino.log("Enviando cabeceras:", Object.keys(headers).join(", ") || "(ninguna)");
 
   return {
     url: source.url,
