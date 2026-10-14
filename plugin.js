@@ -62,6 +62,12 @@ export async function resolve(ref) {
   return {
     url: source.url,
     mime: source.mime || "application/vnd.apple.mpegurl",
-    headers: source.headers || {}
+    headers: {
+      ...(source.headers || {}),
+      "User-Agent":
+        "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36",
+      Referer: EPISODE_URL,
+      Origin: "https://www.canlidizi14.net"
+    }
   };
 }
