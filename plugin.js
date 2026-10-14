@@ -66,7 +66,10 @@ export async function resolve(ref) {
   delete headers.origin;
   delete headers.referer;
 
-  kino.log("Enviando cabeceras:", Object.keys(headers).join(", ") || "(ninguna)");
+  kino.log(
+    "Enviando cabeceras:",
+    Object.keys(headers).join(", ") || "(ninguna)"
+  );
 
   return {
     url: source.url,
