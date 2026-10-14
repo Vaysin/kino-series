@@ -59,15 +59,21 @@ export async function resolve(ref) {
     );
   }
 
+  const headers = source.headers || {};
+  const headerNames = Object.keys(headers).join(", ") || "(ninguna)";
+
+  let urlForLog = source.url;
+  try {
+    const parsed = new URL(source.url);
+    urlForLog = parsed.origin + parsed.pathname;
+  } catch {}
+
+  kino.log("Fuente detectada:", urlForLog);
+  kino.log("Cabeceras capturadas:", headerNames);
+
   return {
     url: source.url,
     mime: source.mime || "application/vnd.apple.mpegurl",
-    headers: {
-      ...(source.headers || {}),
-      "User-Agent":
-        "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36",
-      Referer: EPISODE_URL,
-      Origin: "https://www.canlidizi14.net"
-    }
+    headers
   };
 }
